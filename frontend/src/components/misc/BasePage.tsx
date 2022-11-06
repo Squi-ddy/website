@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import WebsiteRouter from "../router/WebsiteRouter"
+import WebsiteRouter from "../../router/WebsiteRouter"
 
 function BasePage() {
     const [title, setTitle] = useState("")
@@ -13,14 +13,14 @@ function BasePage() {
         <div>
             <div
                 id="header"
-                className="grid grid-flow-row grid-cols-3 items-center justify-items-center p-2 bg-gradient-to-r from-cyan-800 to-cyan-900 h-12 mb-2"
+                className="mb-2 grid h-12 grid-flow-row grid-cols-3 items-center justify-items-center bg-gradient-to-r from-cyan-800 to-cyan-900 p-2"
             >
                 <motion.a
                     href="https://github.com/squi-ddy"
                     initial={{ x: "-100%" }}
                     animate={{ x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="h-full col-start-1 justify-self-start"
+                    className="col-start-1 h-full justify-self-start"
                 >
                     <img
                         src="./src/assets/avatar.png"
@@ -29,7 +29,7 @@ function BasePage() {
                     />
                 </motion.a>
                 <motion.h1
-                    className="text-2xl font-bold col-start-2"
+                    className="col-start-2 text-2xl font-bold"
                     key={title}
                     initial={{ y: "-100%", opacity: 1 }}
                     animate={{ y: 0 }}

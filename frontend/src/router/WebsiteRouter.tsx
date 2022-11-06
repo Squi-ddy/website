@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom"
-import Page from "../components/Page"
-import HomePage from "../components/HomePage"
+import Page from "../components/misc/Page"
+import HomePage from "../components/pages/HomePage"
+import LCSPage from "../components/pages/LCSPage"
 
 function WebsiteRouter(props: { setTitle: (title: string) => void }) {
     const location = useLocation()
@@ -19,7 +20,7 @@ function WebsiteRouter(props: { setTitle: (title: string) => void }) {
                 path="/lcs"
                 element={
                     <Page title="Daily LCS" setTitle={props.setTitle}>
-                        <p>hi</p>
+                        <LCSPage />
                     </Page>
                 }
             />

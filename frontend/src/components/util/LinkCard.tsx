@@ -2,13 +2,13 @@ import { Link } from "react-router-dom"
 
 function LinkCard(props: { title: string; link: string }) {
     return (
-        <div className="border w-10/12 rounded hover:scale-[102.5%] transition-transform duration-500">
+        <div className="w-10/12 rounded border transition-transform duration-500 hover:scale-[102.5%]">
             <Link
                 to={props.link}
-                className="no-underline flex flex-col items-center"
+                className="flex flex-col items-center no-underline"
             >
-                <section className="p-5 min-h-0 flex flex-col">
-                    <h2 className="text-2xl lg:text-3xl font-bold">
+                <section className="flex min-h-0 flex-col p-5">
+                    <h2 className="text-2xl font-bold lg:text-3xl">
                         {props.title}
                     </h2>
                 </section>

@@ -1,7 +1,7 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
 import "./index.css"
-import BasePage from "./components/BasePage"
+import BasePage from "./components/misc/BasePage"
 import { BrowserRouter } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
 

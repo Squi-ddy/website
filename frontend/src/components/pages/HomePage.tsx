@@ -1,5 +1,5 @@
-import LinkCard from "./LinkCard"
-import Separator from "./Separator"
+import LinkCard from "../util/LinkCard"
+import Separator from "../util/Separator"
 
 function HomePage() {
     return (
@@ -10,7 +10,7 @@ function HomePage() {
             <div className="h-2 flex-none"></div>
             <h2 className="text-2xl font-bold">Pages</h2>
             <div className="h-2 flex-none"></div>
-            <ul className="w-full items-center flex flex-col">
+            <ul className="flex w-full flex-col items-center">
                 <LinkCard title="Daily LCS" link="/lcs" />
             </ul>
         </div>
