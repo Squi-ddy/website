@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import WebsiteRouter from "../../router/WebsiteRouter"
+import Spacer from "../util/Spacer"
 
 function BasePage() {
     const [title, setTitle] = useState("")
@@ -39,6 +40,8 @@ function BasePage() {
                     {title}
                 </motion.h1>
             </div>
+
+            <Spacer h={5} />
 
             <WebsiteRouter setTitle={setTitle} />
         </div>

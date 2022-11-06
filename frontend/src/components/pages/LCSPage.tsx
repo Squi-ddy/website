@@ -1,9 +1,10 @@
-import LinkCard from "../util/LinkCard"
 import Separator from "../util/Separator"
 import getCache from "../../util/cache"
 import LCS from "../../types/LCS"
 import getAPI from "../../util/api"
 import { useEffect, useState } from "react"
+import Spacer from "../util/Spacer"
+import LCSDisplay from "../misc/LCSDisplay"
 
 function LCSPage() {
     const lcsCache = getCache(async (lcsNum: number) => {
@@ -11,41 +12,41 @@ function LCSPage() {
         return resp?.data as LCS
     })
 
-    const [LCSNum, setLCSNum]: [number | undefined, (val: number | undefined) => void] = useState(undefined)
+    const [lcs, setLcs]: [LCS | undefined | null, (val: LCS | undefined | null) => void] = useState(null)
 
     useEffect(() => {
         async function getLatestLCS(): Promise<void> {
             const resp = await getAPI(`lcs/lcs`)
             if (resp === undefined) {
+                console.log("sus")
+                setLcs(undefined)
                 return undefined
             }
             const lcs = resp.data as LCS
             lcsCache.set(lcs.id, lcs)
-            setLCSNum(lcs.id)
+            setLcs(lcs)
         }
 
         getLatestLCS().then(r => r)
-    })
+    }, [])
 
-    const failed = (<><div className="h-5 flex-none"></div><p className="text-xl italic">No data :(</p></>)
+    const failed = (<><p className="text-xl italic">No data :(</p></>)
     const page = (<>
-        <p className="text-xl italic">Daily LCS</p>
-        <div className="h-2 flex-none"></div>
+        <p className="text-4xl font-bold">Daily LCS #{lcs?.id}</p>
+        <p className="text-l italic">{lcs?.day}</p>
+        <Spacer h={2} />
         <Separator />
-        <div className="h-2 flex-none"></div>
-        <h2 className="text-2xl font-bold">Pages</h2>
-        <div className="h-2 flex-none"></div>
-        <ul className="flex w-full flex-col items-center">
-            <LinkCard title="Daily LCS" link="/lcs" />
-        </ul>
+        <Spacer h={5} />
+        <LCSDisplay isSus={false} lcs={lcs} />
     </>)
 
     return (
         <div className="flex flex-col items-center">
             {
-                LCSNum === undefined
+                lcs !== null &&
+                (lcs === undefined
                 ? failed
-                : page
+                : page)
             }
         </div>
     )

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { motion } from "framer-motion"
 
 function Page(props: {
@@ -6,7 +6,10 @@ function Page(props: {
     setTitle: (title: string) => void
     children?: React.ReactNode
 }) {
-    props.setTitle(props.title)
+    useEffect(() => {
+        props.setTitle(props.title)
+    }, [props.setTitle, props.title])
+
     return (
         <motion.div
             id="content"
