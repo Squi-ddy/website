@@ -1,28 +1,11 @@
 import React from "react"
-import {createRoot} from "react-dom/client"
-import {
-    createBrowserRouter,
-    RouterProvider,
-    Route
-} from "react-router-dom";
-import BasePage from "./components/BasePage"
+import { createRoot } from "react-dom/client"
 import "./index.css"
+import BasePage from "./components/BasePage"
 
-const router = createBrowserRouter(
-    [
-        {
-            path: "/",
-            element: (
-                <BasePage title="Homepage">
-
-                </BasePage>
-            )
-        }
-    ]
-)
 
 createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <RouterProvider router={router} />
+        <BasePage />
     </React.StrictMode>
 )
