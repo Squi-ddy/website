@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 
 function Spacer(props: { h: number | string }) {
-    const [heightStr, setHeightStr]: [string, (val: string) => void] = useState("1px")
+    const [heightStr, setHeightStr]: [string, (val: string) => void] =
+        useState("1px")
 
     useEffect(() => {
         if (typeof props.h === "number") {
@@ -13,7 +14,13 @@ function Spacer(props: { h: number | string }) {
         }
     }, [props.h])
 
-    return (<div id="spacer" style={{height:heightStr}} className="flex-none"></div>)
+    return (
+        <div
+            id="spacer"
+            style={{ height: heightStr }}
+            className="flex-none"
+        ></div>
+    )
 }
 
 export default Spacer

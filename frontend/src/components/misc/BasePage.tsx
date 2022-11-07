@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import WebsiteRouter from "../../router/WebsiteRouter"
 import Spacer from "../util/Spacer"
 
@@ -29,16 +29,20 @@ function BasePage() {
                         className="h-full"
                     />
                 </motion.a>
-                <motion.h1
-                    className="col-start-2 text-2xl font-bold"
-                    key={title}
-                    initial={{ y: "-100%", opacity: 1 }}
-                    animate={{ y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    {title}
-                </motion.h1>
+                <AnimatePresence mode="wait">
+                    {title !== "" && (
+                        <motion.h1
+                            className="col-start-2 text-2xl font-bold"
+                            key={title}
+                            initial={{ y: "-50%", opacity: 1 }}
+                            animate={{ y: 0 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.1 }}
+                        >
+                            {title}
+                        </motion.h1>
+                    )}
+                </AnimatePresence>
             </div>
 
             <Spacer h={5} />

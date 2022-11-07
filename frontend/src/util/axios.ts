@@ -1,8 +1,12 @@
 import axios, { AxiosError } from "axios"
 
-const fetcher = axios.create({
-    baseURL: "https://api.squiddy.me"
-})
+function getAxios(baseUrl: string) {
+    return axios.create({
+        baseURL: baseUrl,
+    })
+}
+
+const fetcher = getAxios("https://api.squiddy.me")
 
 async function getAPI(link: string) {
     try {
@@ -18,4 +22,4 @@ async function getAPI(link: string) {
     }
 }
 
-export default getAPI
+export { getAxios, getAPI }

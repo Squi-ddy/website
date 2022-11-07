@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 
 function Page(props: {
     title: string
@@ -11,15 +11,17 @@ function Page(props: {
     }, [props.setTitle, props.title])
 
     return (
-        <motion.div
-            id="content"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-        >
-            {props.children}
-        </motion.div>
+        <AnimatePresence mode="wait">
+            <motion.div
+                id="content"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                {props.children}
+            </motion.div>
+        </AnimatePresence>
     )
 }
 
