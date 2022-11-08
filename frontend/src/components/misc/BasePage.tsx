@@ -3,6 +3,10 @@ import { AnimatePresence, motion } from "framer-motion"
 import WebsiteRouter from "../../router/WebsiteRouter"
 import Spacer from "../util/Spacer"
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import avatar from "../../public/avatar.png"
+
 function BasePage() {
     const [title, setTitle] = useState("")
 
@@ -24,7 +28,7 @@ function BasePage() {
                     className="col-start-1 h-full justify-self-start"
                 >
                     <img
-                        src="./src/assets/avatar.png"
+                        src={avatar}
                         alt="icon"
                         className="h-full"
                     />

@@ -44,6 +44,7 @@ function LCSPage() {
             }
             const lcs = new LCSClean(resp.data as LCS)
             lcsCache.set(lcs.id, lcs)
+            console.log(`setting lcs to ${JSON.stringify(lcs)}`)
             setLcs(lcs)
             setMeanings([undefined, undefined, undefined, undefined])
         }
