@@ -1,8 +1,9 @@
-import axios, { AxiosError } from "axios"
+import axios, { AxiosError, CreateAxiosDefaults } from "axios"
 
-function getAxios(baseUrl: string) {
+function getAxios(baseUrl: string, options?: CreateAxiosDefaults) {
     return axios.create({
         baseURL: baseUrl,
+        ...options,
     })
 }
 

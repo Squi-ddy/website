@@ -1,11 +1,12 @@
 import { useEffect, useState, Fragment } from "react"
 import LCSClean from "../../types/LCSClean"
 import { AnimatePresence, motion } from "framer-motion"
+import WiktionaryDef from "../../types/Wiktionary"
 
 function LCSDisplay(props: {
     isSus: boolean
     lcs: LCSClean
-    meanings: (object | undefined)[]
+    meanings: (WiktionaryDef | undefined)[]
 }) {
     const [words, setWords] = useState([
         props.lcs.words[0],
@@ -47,7 +48,13 @@ function LCSDisplay(props: {
                                     exit={{ y: "-50%", opacity: 0 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    {String(props.meanings[i])}
+                                    {JSON.stringify(props.meanings[i])}
+                                    {JSON.stringify(
+                                        Object.fromEntries(
+                                            props.meanings[i]?.meanings ||
+                                                new Map()
+                                        )
+                                    )}
                                 </motion.p>
                             )}
                         </AnimatePresence>

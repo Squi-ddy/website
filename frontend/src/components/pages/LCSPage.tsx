@@ -1,15 +1,17 @@
 import Separator from "../util/Separator"
 import getCache from "../../util/cache"
 import LCS from "../../types/LCS"
-import { getAPI, getAxios } from "../../util/axios"
+import { getAPI } from "../../util/axios"
 import { useEffect, useState } from "react"
 import Spacer from "../util/Spacer"
 import LCSDisplay from "../misc/LCSDisplay"
 import LCSClean from "../../types/LCSClean"
 import State from "../../types/State"
+import { getWiktionaryDef } from "../../util/wiktionary"
+import WiktionaryDef from "../../types/Wiktionary"
 
 type LCSVar = LCSClean | null | undefined
-type MeaningsVar = (object | undefined)[]
+type MeaningsVar = (WiktionaryDef | undefined)[]
 
 function LCSPage() {
     const lcsCache = getCache(async (lcsNum: number) => {
@@ -27,10 +29,6 @@ function LCSPage() {
         undefined,
         undefined,
     ])
-
-    const dictionaryFetcher = getAxios(
-        "https://api.dictionaryapi.dev/api/v2/entries/en/"
-    )
 
     useEffect(() => {
         async function getLatestLCS(): Promise<void> {
@@ -56,9 +54,9 @@ function LCSPage() {
         async function getMeanings(): Promise<void> {
             if (!lcs) return
 
-            const mapping: Promise<object>[] = lcs.words.map(
+            const mapping: Promise<WiktionaryDef | undefined>[] = lcs.words.map(
                 async (word: string) => {
-                    return await dictionaryFetcher.get(word)
+                    return await getWiktionaryDef(word)
                 }
             )
 
