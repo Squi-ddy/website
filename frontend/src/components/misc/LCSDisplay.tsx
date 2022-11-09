@@ -48,7 +48,6 @@ function LCSDisplay(props: {
                                     exit={{ y: "-50%", opacity: 0 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    {JSON.stringify(props.meanings[i])}
                                     {JSON.stringify(
                                         Object.fromEntries(
                                             props.meanings[i]?.meanings ||
